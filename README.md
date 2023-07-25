@@ -44,7 +44,8 @@ git clone git@github.com:ros-planning/moveit_calibration.git src/moveit_calibrat
 # get ur5-demo package
 
 # get the demo
-git clone git@github.com:tudorjnu/ur5-demo.git src/ur5_demo
+
+git clone git@github.com:git@github.com:robotvisionlabs/autonomous-manipulation.git src/ur5_demo
 
 # install dependencies
 sudo apt update -qq
