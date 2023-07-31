@@ -1,60 +1,89 @@
-# ur5-demo
+<div align="center">   
+# Autonomous Manipulation
+</div>
 
-## Scripts
-* **mask.py** MaskRCNN takes in an image, outputs masks, boxes, labels and segmented image.
-* **talker.py**
 
-## Full instalation procedure
-0. Install ROS Noetic:
+<h3 align="center">
+  <a href="#">arXiv</a> |
+  <a href="#">Video</a> |
+  <a href="#">Slides</a>
+</h3>
 
-```bash
-wget -c https://raw.githubusercontent.com/qboticslabs/ros_install_noetic/master/ros_install_noetic.sh && chmod +x ./ros_install_noetic.sh && ./ros_install_noetic.sh
-```
 
-1. Setup the workspace:
+<br><br>
 
-```bash
-mkdir -p ur5_ws/src && cd ur5_ws
-```
+## Table of Contents:
+1. [Highlights](#high)
+2. [Getting Started](#start)
+   - [Installation](docs/INSTALL.md)
+   - [Starting UR5 Simulation](docs/UR5Sim.md)
+   - [Starting UR5 Real Robot](docs/UR5Real.md)
+   - [Callibration](docs/Callibration.md)
+   - [Running](docs/Running.md)
+4. [Results and Models](#models)
+5. [TODO List](#todos)
+6. [License](#license)
 
-2. Setup dependencies:
 
-```bash
-sudo apt -y install ros-noetic-moveit \
-  ros-noetic-realsense2-camera \
-  ros-noetic-realsense2-description
-```
+## Highlights <a name="high"></a>
 
-3. Get the UR-drivers
+- :oncoming_automobile: **Autonomous Manipulation**: Our work focuses on TBD ... 
+- :trophy: **SOTA performance**: All tasks achieve SOTA performance .... 
 
-```bash
-# source global ros
-source /opt/ros/noetic/setup.bash
 
-# clone the driver
-git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git src/Universal_Robots_ROS_Driver
 
-# clone fork of the description. This is currently necessary, until the changes are merged upstream.
-# git clone -b calibration_devel https://github.com/fmauch/universal_robot.git src/fmauch_universal_robot
-git clone -b melodic-devel-staging https://github.com/ros-industrial/universal_robot.git src/universal_robot
+## Getting Started <a name="start"></a>
+   - [Installation](docs/INSTALL.md)
+   - [Starting UR5 Simulation](docs/UR5Sim.md)
+   - [Starting UR5 Real Robot](docs/UR5Real.md)
+   - [Callibration](docs/Callibration.md)
+   - [Running](docs/Running.md)
 
-# get moveit calibration
-git clone git@github.com:ros-planning/moveit_calibration.git src/moveit_calibration
+## Results and Pre-trained Models <a name="models"></a>
+**To fix later**
 
-# get ur5-demo package
+### Stage1: Perception training
+> We first train the perception modules (i.e., track and map) to obtain a stable weight initlization for the next stage. BEV features are aggregated with 5 frames (queue_length = 5).
 
-# get the demo
-git clone git@github.com:tudorjnu/ur5-demo.git src/ur5_demo
+| Method | Encoder | Tracking<br>AMOTA | Mapping<br>IoU-lane | config | Download |
+| :---: | :---: | :---: | :---: | :---:|:---:| 
+| UniAD-B | R101 | 0.390 | 0.297 |  [base-stage1](projects/configs/stage1_track_map/base_track_map.py) | [base-stage1](https://github.com/OpenDriveLab/UniAD/releases/download/v1.0/uniad_base_track_map.pth) |
 
-# install dependencies
-sudo apt update -qq
-rosdep update
-rosdep install --from-paths src --ignore-src -y --rosdistro noetic
 
-# build the workspace
-catkin_make
 
-# activate the workspace (ie: source it)
-echo "source devel/setup.bash" >> ~/.bashrc
-```
+### Stage2: End-to-end training
+> We optimize all task modules together, including track, map, motion, occupancy and planning. BEV features are aggregated with 3 frames (queue_length = 3).
+
+<!-- 
+Pre-trained models and results under main metrics are provided below. We refer you to the [paper](https://arxiv.org/abs/2212.10156) for more details. -->
+
+| Method | Encoder | Tracking<br>AMOTA | Mapping<br>IoU-lane | Motion<br>minADE |Occupancy<br>IoU-n. | Planning<br>avg.Col. | config | Download |
+| :---: | :---: | :---: | :---: | :---:|:---:| :---: | :---: | :---: |
+| UniAD-B | R101 | 0.358 | 0.317 | 0.709 | 64.1 | 0.25 |  [base-stage2](projects/configs/stage2_e2e/base_e2e.py) | [base-stage2](https://github.com/OpenDriveLab/UniAD/releases/download/v1.0/uniad_base_e2e.pth) |
+
+### Checkpoint Usage
+* Download the checkpoints you need into `UniAD/ckpts/` directory.
+* You can evaluate these checkpoints to reproduce the results, following the `evaluation` section in [TRAIN_EVAL.md](docs/TRAIN_EVAL.md).
+* You can also initialize your own model with the provided weights. Change the `load_from` field to `path/of/ckpt` in the config and follow the `train` section in [TRAIN_EVAL.md](docs/TRAIN_EVAL.md) to start training.
+
+
+### Model Structure
+The overall pipeline of UniAD is controlled by [uniad_e2e.py](projects/mmdet3d_plugin/uniad/detectors/uniad_e2e.py) which coordinates all the task modules in `UniAD/projects/mmdet3d_plugin/uniad/dense_heads`. If you are interested in the implementation of a specific task module, please refer to its corresponding file, e.g., [motion_head](projects/mmdet3d_plugin/uniad/dense_heads/motion_head.py).
+
+## TODO List <a name="todos"></a>
+**To be updated**
+- [ ] All configs & checkpoints
+- [ ] Upgrade the implementation of MapFormer from Panoptic SegFormer to [TopoNet](https://github.com/OpenDriveLab/TopoNet), which features the vectorized map representations and topology reasoning.
+- [ ] Support larger batch size
+- [ ] [Long-term] Improve flexibility for future extensions
+- [x] Fix bug: Unable to reproduce the results of stage1 track-map model when training from scratch. [Ref: https://github.com/OpenDriveLab/UniAD/issues/21]
+- [x] Visualization codes 
+- [x] Separating BEV encoder and tracking module
+- [x] Base-model configs & checkpoints
+- [x] Code initialization
+
+
+## License <a name="license"></a>
+
+All assets and code are under the [Apache 2.0 license](./LICENSE) unless specified otherwise.
 
