@@ -73,15 +73,9 @@ The overall pipeline of UniAD is controlled by [uniad_e2e.py](projects/mmdet3d_p
 
 ## TODO List <a name="todos"></a>
 **To be updated**
-- [ ] All configs & checkpoints
-- [ ] Upgrade the implementation of MapFormer from Panoptic SegFormer to [TopoNet](https://github.com/OpenDriveLab/TopoNet), which features the vectorized map representations and topology reasoning.
-- [ ] Support larger batch size
-- [ ] [Long-term] Improve flexibility for future extensions
-- [x] Fix bug: Unable to reproduce the results of stage1 track-map model when training from scratch. [Ref: https://github.com/OpenDriveLab/UniAD/issues/21]
-- [x] Visualization codes 
-- [x] Separating BEV encoder and tracking module
-- [x] Base-model configs & checkpoints
-- [x] Code initialization
+- [x] Finish README
+- [ ] Add vision part
+- [ ] Visualization codes 
 
 
 ## License <a name="license"></a>
