@@ -19,7 +19,7 @@
    - [Installation](docs/INSTALL.md)
    - [Starting UR5 Simulation](docs/UR5Sim.md)
    - [Starting UR5 Real Robot](docs/UR5Real.md)
-   - [Callibration](docs/Callibration.md)
+   - [Calibration](docs/Calibration.md)
    - [Running](docs/Running.md)
 4. [Results and Models](#models)
 5. [TODO List](#todos)
