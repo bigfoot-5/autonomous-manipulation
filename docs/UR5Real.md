@@ -1,18 +1,27 @@
 Setup the UR5 robot for ur_robot_driver:
 
-1. Configure the hardware, and note the IP address of the robot[2] - The tutorial in this link is deprecated, only till step 3.2 shall be followed.
-2.
+1. Configure the hardware: note the IP address of the robot[2](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial) from the UR teach-pendant by navigating to the Setup Robot -> Network. This shall be used to establish a connection with the pc in the following steps.
+ 
+2. Extract the calibration information from the robot - this shall provide the current parameters of the robot in a 'yaml' file[5](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master#prepare-the-ros-pc):
 ```
-roslaunch ur_robot_driver ur5_bringup.launch robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]
+roslaunch ur_calibration calibration_correction.launch robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
 ```
-[details to be added]
+3. Start the robot driver using the existing launch file and pass the calibration information along with it
+```
+roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=<robot_ip> kinematics_config:="${HOME}/my_robot_calibration.yaml"
+```
+4. Use [MoveIt!](http://wiki.ros.org/action/show/moveit?action=show&redirect=MoveIt) to control the robot and allow motion planning[2]
+```
+roslaunch ur5e_moveit_config moveit_planning_execution.launch
+```
+5. Start [RViz]((http://wiki.ros.org/rviz)), including the MoveIt! motion planning plugin run:
+```
+roslaunch ur5e_moveit_config moveit_planning_execution.launch
+```
+6. Use RViz interface to fix the goal state of robot by changing the required joint angles.
+7. Click on plan - ensure the path is free of obstacles.
+8. Click execute - verify the movement of UR5 joints.
 
-
-<!--Setting up MoveIt![details to be added]
-```
-roslaunch ur5_moveit_config moveit_planning_execution.launch
-```
--->
 
 Reference:
 
@@ -31,4 +40,8 @@ https://github.com/ros-industrial/universal_robot
 [4]
 ```
 https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/blob/master/ur_robot_driver/doc/install_urcap_cb3.md#installing-a-urcap-on-a-cb3-robot
+```
+[5]
+```
+https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master#prepare-the-ros-pc
 ```
