@@ -1,7 +1,19 @@
 Setup the UR5 robot for ur_robot_driver:
 
-1. Configure the hardware: note the IP address of the robot[[2]](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial) from the UR teach-pendant by navigating to the Setup Robot -> Network. This shall be used to establish a connection with the pc in the following steps.
- 
+1. Configure the hardware:
+   
+	i. Note the IP address of the robot[[2]](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial) from the UR teach-pendant by navigating to the Setup Robot -> Network. This shall be used to establish a connection with the pc in the following steps.
+
+	ii. On the teach pendant - go to Program Robot -> Installation -> External Control: Confirm the Host IP; Type '50002' in the Custom port; type the Host name from the host pc account which shall be used to operate the robot.
+
+	iii. Go to 'Program' tab; press 'Empty Program'; In the left section, below 'Robot Program', press <'empty'>.
+
+	iv. In the 'Insert program lines here' section, press 'Structure'.
+
+	v. Go to 'URCaps' tab and press on 'External Control'.
+
+Now, the left section of the display, below 'Robot Program', will show 'Control by hostname', according to the hostname which is entered in previous point.
+
 2. Extract the calibration information from the robot - this shall provide the current parameters of the robot in a 'yaml' file[[5]](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master#prepare-the-ros-pc):
 ```
 roslaunch ur_calibration calibration_correction.launch robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
