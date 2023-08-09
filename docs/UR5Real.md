@@ -16,44 +16,35 @@ Now, the left section of the display, below 'Robot Program', will show 'Control 
 
 2. Extract the calibration information from the robot - this shall provide the current parameters of the robot in a 'yaml' file[[5]](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master#prepare-the-ros-pc):
 ```
-roslaunch ur_calibration calibration_correction.launch robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
+roslaunch ur_calibration calibration_correction.launch robot_ip:=<robot_ip> target_filename:="${HOME}/ur_ws/my_robot_calibration.yaml"
 ```
-3. Start the robot driver using the existing launch file and pass the calibration information along with it
+3. On the teach pendant, on the last used display screen in point no. 1, press the :arrow_forward: icon on bottom left.
+4.  Start the robot driver using the existing launch file and pass the calibration information along with it
 ```
-roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=<robot_ip> kinematics_config:="${HOME}/my_robot_calibration.yaml"
+roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=<robot_ip> kinematics_config:="${HOME}/ur_ws/my_robot_calibration.yaml"
 ```
-4. Use [MoveIt!](http://wiki.ros.org/action/show/moveit?action=show&redirect=MoveIt) to control the robot and allow motion planning[[2]](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial)
-```
-roslaunch ur5e_moveit_config moveit_planning_execution.launch
-```
-5. Start [RViz](http://wiki.ros.org/rviz), including the MoveIt! motion planning plugin run:
+5. Use [MoveIt!](http://wiki.ros.org/action/show/moveit?action=show&redirect=MoveIt) to control the robot and allow motion planning[[2]](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial)
 ```
 roslaunch ur5e_moveit_config moveit_planning_execution.launch
 ```
-6. Use RViz interface to fix the goal state of robot by changing the required joint angles.
-7. Click on plan - ensure the path is free of obstacles.
-8. Click execute - verify the movement of UR5 joints.
+6. Start [RViz](http://wiki.ros.org/rviz), including the MoveIt! motion planning plugin run:
+```
+roslaunch ur5e_moveit_config moveit_rviz.launch
+```
+7. Use RViz interface to fix the goal state of robot by changing the required joint angles.
+8. Click on plan - ensure the path is free of obstacles.
+9. Click execute - verify the movement of UR5 joints.
 
 
 Reference:
 
-[1] Date of access - 07/07/2023
-```
-https://github.com/UniversalRobots/Universal_Robots_ROS_Driver
-```
-[2] Date of access - 07/07/2023
-```
-http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial
-```
-[3] Date of access - 07/07/2023
-```
-https://github.com/ros-industrial/universal_robot
-```
-[4] Date of access - 07/07/2023
-```
-https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/blob/master/ur_robot_driver/doc/install_urcap_cb3.md#installing-a-urcap-on-a-cb3-robot
-```
-[5] Date of access - 07/07/2023
-```
-https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master#prepare-the-ros-pc
-```
+[1] [https://github.com/UniversalRobots/Universal_Robots_ROS_Driver](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver); Date of access - 07/07/2023
+
+[2] [http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial); Date of access - 07/07/2023
+
+[3] [https://github.com/ros-industrial/universal_robot](https://github.com/ros-industrial/universal_robot); Date of access - 07/07/2023
+
+[4] [https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/blob/master/ur_robot_driver/doc/install_urcap_cb3.md#installing-a-urcap-on-a-cb3-robot](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/blob/master/ur_robot_driver/doc/install_urcap_cb3.md#installing-a-urcap-on-a-cb3-robot); Date of access - 07/07/2023
+
+[5] [https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master#prepare-the-ros-pc](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master#prepare-the-ros-pc); Date of access - 07/07/2023
+
