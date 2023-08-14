@@ -63,7 +63,7 @@ If **External Control** is not displayed, copy the required '\*.urcap' file usin
     roslaunch ur_calibration calibration_correction.launch robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
     ```
 
-4. Start the robot driver using the existing launch file and pass the calibration information along with it:
+4. In a new terminal, start the robot driver using the existing launch file and pass the calibration information along with it:
     ```bash
     roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=<robot_ip> kinematics_config:="${HOME}/my_robot_calibration.yaml"
     ```
@@ -73,13 +73,13 @@ If **External Control** is not displayed, copy the required '\*.urcap' file usin
 
 ## Using MoveIt! for Motion Planning
 
-5. Use [MoveIt!](http://wiki.ros.org/action/show/moveit?action=show&redirect=MoveIt) to control the robot and allow motion planning[[2]](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial):
+5. In a new terminal, use [MoveIt!](http://wiki.ros.org/action/show/moveit?action=show&redirect=MoveIt) to control the robot and allow motion planning[[2]](http://wiki.ros.org/universal_robot/Tutorials/Getting%20Started%20with%20a%20Universal%20Robot%20and%20ROS-Industrial):
     ```bash
     roslaunch ur5e_moveit_config moveit_planning_execution.launch
     ```
     The screen should now show - 'You can start planning now!'
 
-6. Start [RViz](http://wiki.ros.org/rviz), including the MoveIt! motion planning plugin:
+6. In a new terminal, start [RViz](http://wiki.ros.org/rviz), including the MoveIt! motion planning plugin:
     ```bash
     roslaunch ur5e_moveit_config moveit_rviz.launch
     ```
