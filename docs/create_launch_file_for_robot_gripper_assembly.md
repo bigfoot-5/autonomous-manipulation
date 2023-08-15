@@ -93,7 +93,7 @@ roslaunch moveit_setup_assistant setup_assistant.launch
 2. Go through the MoveIt setup assistant and configure the UR5e robotiq robot model.
 Following link is helpful while going through the setup assistant:
 
-https://roboticscasual.com/ros-tutorial-how-to-create-a-moveit-config-for-the-ur5-and-a-gripper/[https://roboticscasual.com/ros-tutorial-how-to-create-a-moveit-config-for-the-ur5-and-a-gripper/]
+https://roboticscasual.com/ros-tutorial-how-to-create-a-moveit-config-for-the-ur5-and-a-gripper/
 
 
 3. Generate the MoveIt configuration files from the setup assistant. Save it in a folder 'moveit_config' inside 'my_robot' created earlier.
