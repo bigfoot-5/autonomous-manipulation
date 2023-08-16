@@ -1,3 +1,18 @@
+# UR5 Robot Simulation Setup Guide
+
+This guide provides step-by-step instructions to set up a simulation of a UR5 robot for ROS control using the `ure_moveit_config` package. The guide covers launching the ur5e in rviz, and using `ur_commander.py` for planning simulation to a random pose.
+
+## Table of Contents
+1. [Setup the Required Packages](#setup-the-required-packages)
+<!--2. [Extract Calibration Information](#extract-calibration-information)
+3. [Start the Robot Driver](#start-the-robot-driver)
+4. [Using MoveIt! for Motion Planning](#using-moveit-for-motion-planning)
+5. [Reference](#reference)
+-->
+## Setup the Required Packages
+
+1. Clone the _universal_robots_ repository: Create a catkin workspace. Then, clone the repository within _src_ folder in the _ur5_ws_ workspace.
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1. Create a configuration with Robotiq gripper attached with UR5 robot:-
 
@@ -21,4 +36,5 @@ git clone https://github.com/jr-robotics/robotiq.git
 
 References:
 1. https://roboticscasual.com/ros-tutorial-how-to-create-a-moveit-config-for-the-ur5-and-a-gripper/
-2. https://github.com/jr-robotics/robotiq
+2. https://github.com/jr-robotics/robotiq-->
+
