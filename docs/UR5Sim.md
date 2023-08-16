@@ -12,6 +12,16 @@ This guide provides step-by-step instructions to set up a simulation of a UR5 ro
 ## Setup the Required Packages
 
 1. Clone the _universal_robots_ repository: Create a catkin workspace. Then, clone the repository within _src_ folder in the _ur5_ws_ workspace.
+
+## Launch the RViz Simulation
+```bash
+roslaunch ur5e_moveit_config demo.launch
+```
+
+## Run the Commander File in Simulation Mode
+```bash
+rosrun image2position ur5_commander.py -m sim
+```
 <!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1. Create a configuration with Robotiq gripper attached with UR5 robot:-
