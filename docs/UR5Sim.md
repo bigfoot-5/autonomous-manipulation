@@ -1,6 +1,6 @@
 # UR5 Robot Simulation Setup Guide
 
-This guide provides step-by-step instructions to set up a simulation of a UR5 robot for ROS control using the `ure_moveit_config` package. The guide covers launching the ur5e in rviz, and using `ur_commander.py` for planning simulation to a random pose.
+This guide provides step-by-step instructions to set up a simulation of a UR5 robot for ROS control using the `ur5e_moveit_config` package. The guide covers launching the ur5e in rviz, and using `ur_commander.py` for planning simulation to a random pose.
 
 ## Table of Contents
 1. [Setup the Required Packages](#setup-the-required-packages)
