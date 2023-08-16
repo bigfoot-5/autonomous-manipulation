@@ -4,6 +4,8 @@ This guide provides step-by-step instructions to set up a simulation of a UR5 ro
 
 ## Table of Contents
 1. [Setup the Required Packages](#setup-the-required-packages)
+2. [Launch the RViz Simulation](#launch-the-rviz-simulation)
+3. [Run the Commander File in Simulation Mode](#run-the-commander-file-in-simulation-mode)
 <!--2. [Extract Calibration Information](#extract-calibration-information)
 3. [Start the Robot Driver](#start-the-robot-driver)
 4. [Using MoveIt! for Motion Planning](#using-moveit-for-motion-planning)
