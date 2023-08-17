@@ -1,6 +1,9 @@
-## To create a launch file of the assembly of ur5e robot and robotiq_2f_85 gripper
+# To create a launch file of the assembly of ur5e robot and robotiq_2f_85 gripper
 
-# Create a new ROS package
+This guide provides step-by-step instructions to set up an assembly of UR5 robot and Robotiq_2f85 gripper using the individual xacro files. The guide covers creating a xacro file for assembly which instantiate the robot xacro and gripper xacro, generating assembly urdf, creating launch file using Moveit setup assistance and finally launching RViz simulation.
+
+
+## Create a new ROS package
 In `ur5_ws/src` folder
 
 ```bash
@@ -17,13 +20,13 @@ catkin_make
 source ~/ur5_ws/devel/setup.bash
 ```
 
-# Copy the required files in the new package
+## Copy the required files in the new package
 1. Create a folder 'URDF' in 'my_robot'
 2. Copy the `robotiq_arg2f_85_macro.xacro` file from `/home/mridulsongara/ur5_ws/src/robotiq/robotiq_2f_85_gripper_gazebo/urdf` folder into the `my_robot/urdf` folder.
  - The copy is required only because this file need to be modified for instantiating in a assembly file, and it is prefered to not change the original file.
 3. Create a new xacro file called ur5e_robotiq.xacro in the urdf folder.
 
-# Create URDF assembly
+## Create URDF assembly
 Inside the new xacro file, ur5e_robotiq.xacro, copy the following code:
 ```bash
 <?xml version="1.0"?>
@@ -100,7 +103,7 @@ Inside the new xacro file, ur5e_robotiq.xacro, copy the following code:
 rosrun xacro xacro ur5e_robotiq85.xacro > ur5e_robotiq85.urdf
 ```
 
-# Create launch file for assembly
+## Create launch file for assembly
 To visualize the combined UR5 and Robotiq gripper xacro model in RViz and control it with MoveIt:
 <!--1. Launch RViz and set the 'Global Options' > 'Fixed Frame' to 'base'.
 -->
@@ -127,7 +130,7 @@ catkin_make
 source ~/ur5_ws/devel/setup.bash
 ```
 
-# Launch assembly in RViz:
+## Launch assembly in RViz:
 
 ```bash
 roslaunch assembly_moveit_config demo.launch
@@ -136,8 +139,8 @@ roslaunch assembly_moveit_config demo.launch
 
 
 
-# References:
+## References:
 http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html
 http://wiki.ros.org/Industrial/Tutorials/Create_a_MoveIt_Pkg_for_an_Industrial_Robot
 
-Completed with the help of *https://claude.ai*
+*Completed with the help of https://claude.ai*
