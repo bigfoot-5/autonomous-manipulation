@@ -13,7 +13,9 @@ This guide provides step-by-step instructions to set up a simulation of a UR5 ro
 -->
 ## Setup the Required Packages
 
-1. Clone the _universal_robots_ repository: Create a catkin workspace. Then, clone the repository within _src_ folder in the _ur5_ws_ workspace.
+1. Clone the `universal_robots` repository in the `src` folder of in the `ur5_ws` workspace
+2. Create the catkin workspace using `catkin_make`
+3. Source the workspace `~/ur5_ws/devel/setup.bash`
 
 ## Launch the RViz Simulation
 ```bash
