@@ -106,4 +106,8 @@ roslaunch moveit_config move_group.launch
 
 
 
-*Completed with help of https://claude.ai*
+*Completed with the help of*:
+
+https://claude.ai
+http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html
+http://wiki.ros.org/Industrial/Tutorials/Create_a_MoveIt_Pkg_for_an_Industrial_Robot
